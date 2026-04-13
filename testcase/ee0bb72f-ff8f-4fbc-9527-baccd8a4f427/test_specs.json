@@ -1,0 +1,16 @@
+{
+  "name": "Integration - Retrieval and LLM Workflow",
+  "description": "Tests the integration of RetrievalClient and LLMClient by submitting a question and verifying that the answer is grounded in retrieved chunks.",
+  "test_type": "integration",
+  "input": "Simulate ApplicationOrchestrator.process_question with a valid question string.",
+  "output": "A string answer that contains content from at least one retrieved chunk.",
+  "success_criteria": [
+    "Retrieved chunks are not empty",
+    "Answer contains text from one or more retrieved chunks",
+    "Answer is a string"
+  ],
+  "error_scenarios": [
+    "Azure Search returns no results",
+    "OpenAI LLM call fails"
+  ]
+}
