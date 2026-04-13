@@ -1,0 +1,11 @@
+[
+  {
+    "id": "test_1",
+    "name": "Functional - Input Validation Failure",
+    "description": "Test: Functional - Input Validation Failure",
+    "type": "functional",
+    "status": "passed",
+    "duration": 0.0,
+    "error": null
+  }
+]
