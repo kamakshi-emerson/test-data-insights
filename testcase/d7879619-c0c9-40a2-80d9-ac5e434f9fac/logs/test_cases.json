@@ -1,0 +1,11 @@
+[
+  {
+    "id": "test_1",
+    "name": "test_agent.py::test_performance_ask_endpoint_latency",
+    "description": "Test: test_agent.py::test_performance_ask_endpoint_latency",
+    "type": "performance",
+    "status": "failed",
+    "duration": 0.0,
+    "error": "typical_question_payload = {'question': 'What is the capital of France?', 'user_id': 'user123'}\nmock_requests_post = <MagicMock name='post' id='139676283314896'>\nmock_requests_get = <function mock_requests_get.<locals>.mock_get at 0x7f08eb2a82c0>\n\n    @pytest.mark.performance\n    def test_performance_ask_endpoint_latency(typical_question_payload, mock_requests_post, mock_requests_get):\n        \"\"\"\n        Measures the response time of the /ask endpoint under normal load to ensure it meets performance requirements.\n        Success criteria:\n          - Average response time is below 3000ms\n          - No timeouts or server errors\n        \"\"\"\n        import requests\n    \n        url = \"http://mocked-api.test/ask\"\n        num_requests = 5\n        response_times = []\n    \n        for _ in range(num_requests):\n            start = time.time()\n            response = requests.post(url, json=typical_question_payload)\n            end = time.time()\n            elapsed_ms = (end - start) * 1000\n            response_times.append(elapsed_ms)\n            # Assert no server error or timeout\n            assert response.status_code == 200, f\"Server error: {response.status_code}\"\n>           assert \"answer\" in response.json(), \"Missing answer in response\"\nE           AssertionError: Missing answer in response\nE           assert 'answer' in {'data': 'test', 'message': 'Mocked response', 'status': 'success', 'success': True, ...}\nE            +  where {'data': 'test', 'message': 'Mocked response', 'status': 'success', 'success': True, ...} = <MagicMock name='mock.json' id='139676281715024'>()\nE            +    where <MagicMock name='mock.json' id='139676281715024'> = <MagicMock id='139676281708624'>.json\n\ntest_agent.py:81: AssertionError"
+  }
+]
