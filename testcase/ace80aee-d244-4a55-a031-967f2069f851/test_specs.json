@@ -1,0 +1,15 @@
+{
+  "name": "Integration - Configuration Validation on Startup",
+  "description": "Verifies that the application fails to start with a clear error if required environment variables are missing.",
+  "test_type": "integration",
+  "input": "Start the application with one or more required environment variables unset.",
+  "output": "Application startup fails with a configuration error message.",
+  "success_criteria": [
+    "Application does not start",
+    "Error message lists missing environment variables"
+  ],
+  "error_scenarios": [
+    "Partial configuration present",
+    "All configuration missing"
+  ]
+}
