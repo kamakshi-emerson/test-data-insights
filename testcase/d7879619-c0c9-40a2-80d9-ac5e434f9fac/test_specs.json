@@ -1,0 +1,15 @@
+{
+  "name": "Performance - /ask Endpoint Latency",
+  "description": "Measures the response time of the /ask endpoint under normal load to ensure it meets performance requirements.",
+  "test_type": "performance",
+  "input": "POST /ask with a typical question payload.",
+  "output": "Response time in milliseconds.",
+  "success_criteria": [
+    "Average response time is below 3000ms",
+    "No timeouts or server errors"
+  ],
+  "error_scenarios": [
+    "External API latency",
+    "Resource exhaustion"
+  ]
+}
