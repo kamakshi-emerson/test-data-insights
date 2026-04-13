@@ -1,0 +1,16 @@
+{
+  "name": "Performance - High Load /ask Endpoint",
+  "description": "Simulates multiple concurrent requests to the /ask endpoint to verify system stability and throughput.",
+  "test_type": "performance",
+  "input": "Send 50 concurrent POST requests to /ask with valid questions.",
+  "output": "All responses are received within acceptable time and without errors.",
+  "success_criteria": [
+    "All requests complete successfully",
+    "No 5xx errors returned",
+    "95th percentile response time is below 5000ms"
+  ],
+  "error_scenarios": [
+    "Server crashes under load",
+    "Increased error rates"
+  ]
+}
