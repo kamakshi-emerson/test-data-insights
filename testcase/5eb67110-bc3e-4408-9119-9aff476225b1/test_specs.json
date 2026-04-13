@@ -1,0 +1,17 @@
+{
+  "name": "Functional - Valid Question Returns Answer",
+  "description": "Validates that submitting a well-formed question via the /ask endpoint returns a successful answer.",
+  "test_type": "functional",
+  "input": "POST /ask with JSON body: {\"question\": \"What are some key facts about Mars?\"}",
+  "output": "JSON response with success=true and a non-empty answer string.",
+  "success_criteria": [
+    "HTTP status code is 200",
+    "response['success'] is True",
+    "response['answer'] is a non-empty string"
+  ],
+  "error_scenarios": [
+    "Knowledge base is empty",
+    "LLM service is unavailable",
+    "Azure Search is misconfigured"
+  ]
+}
