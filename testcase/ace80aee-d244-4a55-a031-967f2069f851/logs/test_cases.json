@@ -1,0 +1,11 @@
+[
+  {
+    "id": "test_1",
+    "name": "Integration - Configuration Validation on Startup",
+    "description": "Test: Integration - Configuration Validation on Startup",
+    "type": "integration",
+    "status": "passed",
+    "duration": 0.0,
+    "error": null
+  }
+]
