@@ -1,0 +1,61 @@
+=== PYTEST EXECUTION LOG ===
+
+Exit Code: 1
+
+STDOUT:
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.3, pluggy-1.6.0 -- /tmp/aba_venv_cache/venv_0fea422c7740f6022416e05b45b14f2f/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.11.15', 'Platform': 'Linux-5.15.0-1102-azure-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.3', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.3.0', 'anyio': '4.13.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}}
+rootdir: /tmp/test_venv_exec_z7w_n1zh
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.13.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+test_agent.py::test_performance_ask_endpoint_latency FAILED              [100%]
+
+=================================== FAILURES ===================================
+____________________ test_performance_ask_endpoint_latency _____________________
+
+typical_question_payload = {'question': 'What is the capital of France?', 'user_id': 'user123'}
+mock_requests_post = <MagicMock name='post' id='139676283314896'>
+mock_requests_get = <function mock_requests_get.<locals>.mock_get at 0x7f08eb2a82c0>
+
+    @pytest.mark.performance
+    def test_performance_ask_endpoint_latency(typical_question_payload, mock_requests_post, mock_requests_get):
+        """
+        Measures the response time of the /ask endpoint under normal load to ensure it meets performance requirements.
+        Success criteria:
+          - Average response time is below 3000ms
+          - No timeouts or server errors
+        """
+        import requests
+    
+        url = "http://mocked-api.test/ask"
+        num_requests = 5
+        response_times = []
+    
+        for _ in range(num_requests):
+            start = time.time()
+            response = requests.post(url, json=typical_question_payload)
+            end = time.time()
+            elapsed_ms = (end - start) * 1000
+            response_times.append(elapsed_ms)
+            # Assert no server error or timeout
+            assert response.status_code == 200, f"Server error: {response.status_code}"
+>           assert "answer" in response.json(), "Missing answer in response"
+E           AssertionError: Missing answer in response
+E           assert 'answer' in {'data': 'test', 'message': 'Mocked response', 'status': 'success', 'success': True, ...}
+E            +  where {'data': 'test', 'message': 'Mocked response', 'status': 'success', 'success': True, ...} = <MagicMock name='mock.json' id='139676281715024'>()
+E            +    where <MagicMock name='mock.json' id='139676281715024'> = <MagicMock id='139676281708624'>.json
+
+test_agent.py:81: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /tmp/test_venv_exec_z7w_n1zh/pytest_report.json
+=========================== short test summary info ============================
+FAILED test_agent.py::test_performance_ask_endpoint_latency - AssertionError:...
+============================== 1 failed in 0.15s ===============================
+
+
+STDERR:
