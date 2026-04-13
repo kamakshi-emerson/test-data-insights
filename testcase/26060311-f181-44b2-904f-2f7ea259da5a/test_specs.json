@@ -1,0 +1,17 @@
+{
+  "name": "Functional - Input Validation Failure",
+  "description": "Ensures that submitting an empty question triggers input validation and returns a 422 error with appropriate details.",
+  "test_type": "functional",
+  "input": "POST /ask with JSON body: {\"question\": \"   \"}",
+  "output": "JSON response with success=false, error message, and validation details.",
+  "success_criteria": [
+    "HTTP status code is 422",
+    "response['success'] is False",
+    "response['error'] contains 'Input validation failed.'",
+    "response['details'] contains validation error for 'question'"
+  ],
+  "error_scenarios": [
+    "Malformed JSON",
+    "Missing 'question' field"
+  ]
+}
