@@ -1,0 +1,14 @@
+{
+  "name": "Integration - Error Handling and Fallback Response",
+  "description": "Checks that when the retrieval or LLM fails, the fallback response is returned and error is logged.",
+  "test_type": "integration",
+  "input": "Simulate a failure in RetrievalClient.retrieve_chunks or LLMClient.generate_answer during process_question.",
+  "output": "Fallback response string is returned to the user.",
+  "success_criteria": [
+    "Returned answer matches fallback_response",
+    "Error is logged at error level"
+  ],
+  "error_scenarios": [
+    "Unexpected exception in retrieval or LLM"
+  ]
+}
